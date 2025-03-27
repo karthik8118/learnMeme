@@ -1,34 +1,46 @@
 {
     "memes": [
-      {
-        "id": "1",
-        "type": "embed",
-        "source": "tenor",
-        "content": "<div class='tenor-gif-embed' data-postid='16259749058826278291' data-share-method='host' data-aspect-ratio='1.44767' data-width='100%'></div>",
-        "script": "https://tenor.com/embed.js",
-        "explanation": "Peaky Blinders - No Fighting Scene"
-      },
-      {
-        "id": "2",
-        "type": "embed",
-        "source": "tenor",
-        "content": "<div class='tenor-gif-embed' data-postid='15712129875520007531' data-share-method='host' data-aspect-ratio='0.937751' data-width='100%'></div>",
-        "script": "https://tenor.com/embed.js",
-        "explanation": "Confused Monkey Reaction"
-      },
-      {
-        "id": "3",
-        "type": "url",
-        "source": "external",
-        "url": "https://socialbu.com/blog/wp-content/webpc-passthru.php?src=https://socialbu.com/blog/wp-content/uploads/2024/07/32e8bb6d-4d44-45a9-8c2b-37df13601147-402x450.png&nocache=1",
-        "explanation": "Example meme from URL"
-      },
-      {
-        "id": "4",
-        "type": "local",
-        "source": "device",
-        "path": "assets/images/local-meme.jpg",
-        "explanation": "Local meme from device"
-      }
+        {
+            "id": "1",
+            "type": "local",
+            "path": "assets/images/meme_1.jpg",
+            "explanation": "Add your explanation for meme 1 here"
+        },
+        {
+            "id": "2",
+            "type": "local",
+            "path": "assets/images/meme_2.jpg",
+            "explanation": "Add your explanation for meme 2 here"
+        },
+        {
+            "id": "3",
+            "type": "local",
+            "path": "assets/images/meme_3.JPG",
+            "explanation": "Add your explanation for meme 3 here"
+        },
+        {
+            "id": "4",
+            "type": "local",
+            "path": "assets/images/meme_4.WEBP",
+            "explanation": "Add your explanation for meme 4 here"
+        },
+        {
+            "id": "5",
+            "type": "local",
+            "path": "assets/images/meme_5.jpg",
+            "explanation": "Add your explanation for meme 5 here"
+        },
+        {
+            "id": "6",
+            "type": "local",
+            "path": "assets/images/meme_6.jpg",
+            "explanation": "Add your explanation for meme 6 here"
+        },
+        {
+            "id": "7",
+            "type": "local",
+            "path": "assets/images/meme_7.jpg",
+            "explanation": "Add your explanation for meme 7 here"
+        }
     ]
-  }
+}
