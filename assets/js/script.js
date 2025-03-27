@@ -33,6 +33,10 @@ function showMeme() {
     memeContainer.appendChild(img);
     
     document.getElementById('meme-text').innerText = meme.explanation || 'No explanation available';
+
+    // Ensure the card is always showing the front side
+    const memeCard = document.querySelector('.meme-card');
+    memeCard.classList.remove('flipped');
 }
 
 // Initialize theme
@@ -55,25 +59,55 @@ document.querySelector('.meme-card').addEventListener('click', function() {
 });
 
 document.getElementById('next').addEventListener('click', (e) => {
-    e.stopPropagation();
+    e.stopPropagation(); // Prevent event bubbling
     currentMemeIndex = (currentMemeIndex + 1) % memes.length;
     showMeme();
+
+    // Ensure the card is not flipped after navigation
+    const memeCard = document.querySelector('.meme-card');
+    memeCard.classList.remove('flipped');
 });
 
 document.getElementById('prev').addEventListener('click', (e) => {
-    e.stopPropagation();
+    e.stopPropagation(); // Prevent event bubbling
     currentMemeIndex = (currentMemeIndex - 1 + memes.length) % memes.length;
     showMeme();
+
+    // Ensure the card is not flipped after navigation
+    const memeCard = document.querySelector('.meme-card');
+    memeCard.classList.remove('flipped');
 });
 
 const themeToggle = document.getElementById('theme-toggle');
 themeToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
+    e.stopPropagation(); // Prevent event bubbling
     document.body.classList.toggle('dark-mode');
     const isDarkMode = document.body.classList.contains('dark-mode');
     themeToggle.textContent = isDarkMode ? "☀️" : "🌙";
     localStorage.setItem('darkMode', isDarkMode);
 });
+
+
+// Show the modal on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('terms-modal');
+    const acceptTermsCheckbox = document.getElementById('accept-terms');
+    const submitButton = document.getElementById('submit-terms');
+
+    // Show the modal
+    modal.classList.add('show');
+
+    // Enable the submit button when the checkbox is checked
+    acceptTermsCheckbox.addEventListener('change', () => {
+        submitButton.disabled = !acceptTermsCheckbox.checked;
+    });
+
+    // Close the modal when the submit button is clicked
+    submitButton.addEventListener('click', () => {
+        modal.classList.remove('show');
+    });
+});
+
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
