@@ -4,7 +4,7 @@ let currentMemeIndex = 0;
 // Load memes from JSON file
 async function loadMemes() {
     try {
-        const response = await fetch('data/memes.json');
+        const response = await fetch('data/meme.json'); // Corrected file name
         if (!response.ok) throw new Error('Failed to fetch memes');
         const data = await response.json();
         memes = data.memes;
@@ -21,39 +21,16 @@ function showMeme() {
     const memeContainer = document.querySelector('.meme-front');
     memeContainer.innerHTML = '';
     
-    switch(meme.type) {
-        case 'embed':
-            const embedDiv = document.createElement('div');
-            embedDiv.innerHTML = meme.content;
-            embedDiv.className = 'media-content';
-            memeContainer.appendChild(embedDiv);
-            
-            if (meme.script) {
-                const script = document.createElement('script');
-                script.src = meme.script;
-                script.async = true;
-                document.body.appendChild(script);
-            }
-            break;
-            
-        case 'url':
-        case 'local':
-            const img = document.createElement('img');
-            img.className = 'media-content';
-            img.src = meme.type === 'url' ? meme.url : meme.path;
-            img.alt = meme.explanation;
-            img.loading = 'lazy';
-            img.onerror = () => {
-                img.src = 'assets/images/error.png'; // Fallback image
-                console.error('Failed to load image:', meme.url || meme.path);
-            };
-            memeContainer.appendChild(img);
-            break;
-            
-        default:
-            console.error('Unknown meme type:', meme.type);
-            memeContainer.innerHTML = 'Invalid meme type 😕';
-    }
+    const img = document.createElement('img');
+    img.className = 'media-content';
+    img.src = meme.path;
+    img.alt = meme.explanation;
+    img.loading = 'lazy';
+    img.onerror = () => {
+        img.src = 'assets/images/error.png'; // Fallback image
+        console.error('Failed to load image:', meme.path);
+    };
+    memeContainer.appendChild(img);
     
     document.getElementById('meme-text').innerText = meme.explanation || 'No explanation available';
 }
@@ -96,21 +73,6 @@ themeToggle.addEventListener('click', (e) => {
     const isDarkMode = document.body.classList.contains('dark-mode');
     themeToggle.textContent = isDarkMode ? "☀️" : "🌙";
     localStorage.setItem('darkMode', isDarkMode);
-});
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-    switch(e.key) {
-        case 'ArrowLeft':
-            document.getElementById('prev').click();
-            break;
-        case 'ArrowRight':
-            document.getElementById('next').click();
-            break;
-        case 'Space':
-            document.querySelector('.meme-card').click();
-            break;
-    }
 });
 
 // Initialize
